@@ -1,0 +1,26 @@
+services:
+  mindustry:
+    build:
+      context: ./app
+    
+    # enable tty and stdin to make `docker attach` work
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+    # Security - Disable write access within the container
+    read_only: true
+
+    # Security - Disable all additional Docker capabilitis
+    cap_drop:
+      - ALL
+
+    ports:
+      - "6567:6567"
+    restart: always
+
+    # map config to host machine
+    volumes:
+      - mindustry-data:/mindustry
+
+volumes:
+  mindustry-data:
