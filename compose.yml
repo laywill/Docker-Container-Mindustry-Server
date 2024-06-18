@@ -30,4 +30,7 @@ services:
 
     # Ensure data is persistent outside the container
     volumes:
-      - ./mindustry-data:/mindustry
+      - mindustry-data:/mindustry
+
+volumes:
+  mindustry-data:
