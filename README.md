@@ -1,5 +1,7 @@
 # Dockerised Mindustry Server
 
+[![MegaLinter](https://github.com/laywill/Mindustry-Server-Docker/actions/workflows/mega-linter.yml/badge.svg)](https://github.com/laywill/Mindustry-Server-Docker/actions/workflows/mega-linter.yml)
+
 ## Dependencies
 
 - Windows:
