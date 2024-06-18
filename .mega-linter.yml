@@ -11,3 +11,5 @@ DISABLE_LINTERS:
 EMAIL_REPORTER: false
 SPELL_FILTER_REGEX_EXCLUDE: (fonts|\.github|.mega-linter.yml)
 LATEX_CHKTEX_ARGUMENTS: --nowarn 13
+
+TERRAFORM_KICS_ARGUMENTS: --fail-on "critical,high,medium"
