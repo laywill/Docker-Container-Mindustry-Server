@@ -1,0 +1,18 @@
+# Dockerised Mindustry Server
+
+## Dependencies
+
+- Windows:
+  - Docker Desktop installed
+- Linux:
+  - Docker Engine installed
+  - Docker Compose installed
+
+## Running
+
+```bash
+docker compose run --rm mindustry
+```
+
+This will capture your terminal and bring you into an interactive TTY.
+From here you are within the Mindustry Server application and can control it as normal.
