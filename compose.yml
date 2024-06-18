@@ -1,26 +1,33 @@
+---
 services:
   mindustry:
     build:
       context: ./app
-    
+
     # enable tty and stdin to make `docker attach` work
     stdin_open: true # docker run -i
     tty: true        # docker run -t
 
     # Security - Disable write access within the container
     read_only: true
+    
+    # https://docs.docker.com/reference/cli/docker/container/run/#security-opt
+    # Security - Disable container processes from gaining new privileges 
+    security_opt:
+      - "no-new-privileges=true"
 
     # Security - Disable all additional Docker capabilitis
     cap_drop:
       - ALL
 
+    # Exlicitly bind container ports to localhost
     ports:
-      - "6567:6567"
+      - "127.0.0.1:6567:6567"
+
+    # Restart the container if it hits any issues.
+    # NB: this will reload the server but not neccessarily a running game.
     restart: always
 
-    # map config to host machine
+    # Ensure data is persistent outside the container
     volumes:
-      - mindustry-data:/mindustry
-
-volumes:
-  mindustry-data:
+      - ./mindustry-data:/mindustry
