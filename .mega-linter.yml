@@ -10,7 +10,10 @@ DISABLE_LINTERS:
   - COPYPASTE_JSCPD
   - REPOSITORY_DEVSKIM
 EMAIL_REPORTER: false
-SPELL_FILTER_REGEX_EXCLUDE: (fonts|\.github|.mega-linter.yml)
-LATEX_CHKTEX_ARGUMENTS: --nowarn 13
+SPELL_FILTER_REGEX_EXCLUDE: (\.cspell.json|\.gitignore|\.github|.mega-linter.yml)
 
+# Limit the severiy required to fail the KICS job.
 TERRAFORM_KICS_ARGUMENTS: --fail-on "critical,high,medium"
+
+# Allow JSON Comments.
+JSON_JSONLINT_ARGUMENTS: --comments

@@ -22,7 +22,7 @@ services:
 
     # Explicitly bind container ports to localhost.
     ports:
-      - "6567:6567"
+      - "127.0.0.1:6567:6567"
 
     # Healthcheck will tell us if the application has frozen.
     healthcheck:
