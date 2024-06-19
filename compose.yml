@@ -9,16 +9,16 @@ services:
     tty: true        # docker run -t
 
     # Security - Disable write access within the container.
-    read_only: true
+    # read_only: true
 
     # https://docs.docker.com/reference/cli/docker/container/run/#security-opt
     # Security - Disable container processes from gaining new privileges.
-    security_opt:
-      - no-new-privileges:true
+    # security_opt:
+    #   - no-new-privileges:true
 
     # Security - Disable all additional Docker capabilities.
-    cap_drop:
-      - ALL
+    # cap_drop:
+    #   - ALL
 
     # Explicitly bind container ports to localhost.
     ports:
