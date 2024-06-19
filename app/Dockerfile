@@ -5,6 +5,7 @@
 # https://docs.docker.com/engine/reference/builder/
 
 FROM amd64/alpine:20230901
+WORKDIR "/"
 RUN apk update && \
     apk add --no-cache \
     openjdk17-jre-headless=17.0.11_p9-r0

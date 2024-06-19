@@ -1,0 +1,21 @@
+// cSpell Settings
+{
+    // Version of the setting file.  Always 0.2
+    "version": "0.2",
+    // language - current active spelling language
+    "language": "en-GB",
+    // allowCompoundWords - set to true to allow compound words
+    "allowCompoundWords": true,
+    // dictionaries - list of name of dictionaries to use
+    "dictionaries": ["en-GB", "bash", "softwareTerms", "filetypes", "companies", "misc"],
+    // words - list of words to be always considered correct
+    "words": [
+        "Mindustry","Docker", "Dockerised"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ]
+}
