@@ -26,6 +26,7 @@ jobs:
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
       # Remove the ones you do not need
+      #checkov:skip=CKV2_GHA_1:Megalinter uses these permissions to raise PRs.
       contents: write
       issues: write
       pull-requests: write
