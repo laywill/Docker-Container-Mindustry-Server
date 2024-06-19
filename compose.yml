@@ -1,0 +1,46 @@
+---
+services:
+  mindustry:
+    build:
+      context: ./app
+
+    # enable tty and stdin to make `docker attach` work.
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+    # Security - Disable write access within the container.
+    read_only: true
+
+    # https://docs.docker.com/reference/cli/docker/container/run/#security-opt
+    # Security - Disable container processes from gaining new privileges.
+    security_opt:
+      - no-new-privileges:true
+
+    # Security - Disable all additional Docker capabilities.
+    cap_drop:
+      - ALL
+
+    # Explicitly bind container ports to localhost.
+    ports:
+      - "127.0.0.1:6567:6567"
+
+    # Healthcheck will tell us if the application has frozen.
+    healthcheck:
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      test: ["CMD", "ps", "aux", "|", "grep", "java", "||", "exit", "1"]
+
+    # Restart the container if healthcheck fails.
+    # NB: this will reload the server but not necessarily a running game.
+    restart: always
+
+    # Ensure data is persistent outside the container.
+    volumes:
+      # Use this if you want Mindustry to run standalone or on a remote server.
+      - mindustry-data:/mindustry
+      # Use this if you are running Mindustry locally and want it to share steam assets.
+      # - 'C:\Program Files (x86)\Steam\steamapps\common\Mindustry\saves:/mindustry'
+
+volumes:
+  mindustry-data:

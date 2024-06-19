@@ -1,0 +1,20 @@
+---
+# Configuration file for MegaLinter
+# See all available variables at https://megalinter.io/latest/configuration/ and in linters documentation
+
+FILTER_REGEX_EXCLUDE: '(fonts)'
+APPLY_FIXES: all
+DISABLE_LINTERS:
+  - JSON_PRETTIER
+  - YAML_PRETTIER
+  - COPYPASTE_JSCPD
+  - REPOSITORY_DEVSKIM
+  - REPOSITORY_CHECKOV
+EMAIL_REPORTER: false
+SPELL_FILTER_REGEX_EXCLUDE: (\.cspell.json|\.gitignore|\.github|.mega-linter.yml)
+
+# Limit the severiy required to fail the KICS job.
+REPOSITORY_KICS_ARGUMENTS: "--fail-on 'critical,high,medium'"
+
+# Allow JSON Comments.
+JSON_JSONLINT_ARGUMENTS: --comments
