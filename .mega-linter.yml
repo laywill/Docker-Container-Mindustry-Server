@@ -13,7 +13,7 @@ EMAIL_REPORTER: false
 SPELL_FILTER_REGEX_EXCLUDE: (\.cspell.json|\.gitignore|\.github|.mega-linter.yml)
 
 # Limit the severiy required to fail the KICS job.
-TERRAFORM_KICS_ARGUMENTS: '--fail-on "critical,high,medium"'
+TERRAFORM_KICS_ARGUMENTS: "--fail-on 'critical,high,medium'"
 
 # Allow JSON Comments.
 JSON_JSONLINT_ARGUMENTS: --comments
