@@ -29,9 +29,6 @@ RUN mkdir "$DATA_DIR" && \
     chown -R "$APP_USER":"$APP_USER" "$DATA_DIR"
 VOLUME ["$DATA_DIR"]
 
-#      GAME     STATUS
-EXPOSE 6567/udp 6567/tcp
-
 USER "$APP_USER"
 WORKDIR "$DATA_DIR"
 ENV APP_BIN="$APP_BIN" \
@@ -39,6 +36,9 @@ ENV APP_BIN="$APP_BIN" \
 
 # Healthcheck: If Java is running, assume all ok.
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD ["ps", "aux", "|", "grep", "java", "||", "exit", "1"]
+
+#      GAME     STATUS
+EXPOSE 6567/udp 6567/tcp
 
 # Run Mindustry
 ENTRYPOINT ["exec", "java", "${JAVA_OPT}", "-jar", "$APP_BIN"]

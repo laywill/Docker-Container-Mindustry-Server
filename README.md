@@ -13,7 +13,7 @@
 ## Running
 
 ```bash
-docker compose run --rm mindustry
+docker compose run -p 6567:6567 --rm mindustry
 ```
 
 This will capture your terminal and bring you into an interactive TTY.
