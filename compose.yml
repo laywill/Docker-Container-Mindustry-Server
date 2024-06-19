@@ -37,7 +37,10 @@ services:
 
     # Ensure data is persistent outside the container.
     volumes:
+      # Use this if you want Mindustry to run standalone or on a remote server.
       - mindustry-data:/mindustry
+      # Use this if you are running Mindustry locally and want it to share steam assets.
+      # - 'C:\Program Files (x86)\Steam\steamapps\common\Mindustry\saves:/mindustry'
 
 volumes:
   mindustry-data:
