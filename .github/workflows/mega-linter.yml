@@ -8,6 +8,9 @@ on: # yamllint disable-line rule:truthy
   push: # Comment this line to trigger action only on pull-requests (not recommended if you don't pay for GH Actions)
   pull_request:
     branches: [master, main]
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "15 0 1 * *"
 
 env: # Comment env block if you don't want to apply fixes
   # Apply linter fixes configuration
@@ -20,8 +23,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  pre_job:
+    # continue-on-error: true # Uncomment once integration is finished
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          # All of these options are optional, so you can remove them if you are happy with the defaults
+          concurrent_skipping: 'never'
+          skip_after_successful_duplicate: 'true'
+          paths_ignore: '["**/README.md", "**/docs/**"]'
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+
   megalinter:
     name: MegaLinter
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
     runs-on: ubuntu-latest
     #checkov:skip=CKV2_GHA_1:Megalinter uses these permissions to raise PRs.
     permissions:
